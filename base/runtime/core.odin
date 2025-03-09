@@ -342,6 +342,7 @@ Logger_Option :: enum {
 	Level,
 	Date,
 	Time,
+	Millis,
 	Short_File_Path,
 	Long_File_Path,
 	Line,

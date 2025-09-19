@@ -2,8 +2,10 @@ package sdl3
 
 import "core:c"
 
+foreign import lib { "libSDL3.a" }
+
 @(link_prefix="SDL_")
-foreign lib {
+foreign {
 	joystick_lock: ^Mutex
 }
 

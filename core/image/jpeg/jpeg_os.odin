@@ -1,3 +1,4 @@
+#+build windows
 package jpeg
 
 import "core:os"

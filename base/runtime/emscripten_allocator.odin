@@ -8,7 +8,6 @@ this uses proper alignment, so that maps and simd works.
 
 import "core:c"
 import "base:intrinsics"
-import "base:runtime"
 // This will create bindings to emscripten's implementation of libc
 // memory allocation features.
 @(default_calling_convention = "c")

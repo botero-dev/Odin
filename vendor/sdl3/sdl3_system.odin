@@ -3,8 +3,8 @@ package sdl3
 import "core:c"
 
 // Windows
-
 import win32 "core:sys/windows"
+when ODIN_OS == .Windows {
 
 WindowsMessageHook :: #type proc(userdata: rawptr, msg: ^win32.MSG) -> bool
 
@@ -13,6 +13,7 @@ foreign lib {
 	SetWindowsMessageHook    :: proc(callback: WindowsMessageHook, userdata: rawptr) ---
 	GetDirect3D9AdapterIndex :: proc(displayID: DisplayID) -> c.int ---
 	GetDXGIOutputInfo        :: proc(displayID: DisplayID, adapterIndex: ^c.int, outputIndex: ^c.int) -> bool ---
+}
 }
 
 // UNIX

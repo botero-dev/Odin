@@ -66,6 +66,7 @@ For example:
 Full_Timestamp_Opts :: Options{
 	.Date,
 	.Time,
+	.Time_Millis,
 }
 
 /*

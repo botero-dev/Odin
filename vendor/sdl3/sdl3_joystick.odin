@@ -2,7 +2,6 @@ package sdl3
 
 import "core:c"
 
-
 Joystick :: struct {}
 JoystickID :: distinct Uint32
 

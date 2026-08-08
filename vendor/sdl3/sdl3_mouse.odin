@@ -33,7 +33,13 @@ MouseWheelDirection :: enum c.int {
 	NORMAL,    /**< The scroll direction is normal */
 	FLIPPED,   /**< The scroll direction is flipped / natural */
 }
-
+MouseWheelSource :: enum c.int {
+	UNSPECIFIED, /**< The system didn't provide source info. Presumably is a wheel. */
+	WHEEL,       /**< Event comes from wheel rotation */
+	TOUCH,       /**< Event comes from touchpad two-finger gesture or similar */
+	CONTINUOUS,  /**< Event comes from other source that reports continuous scrolling events */
+	WHEEL_TILT,  /**< Event comes from mouse wheel being tilted sideways */
+}
 CursorFrameInfo :: struct {
 	surface:  ^Surface,
 	duration: Uint32,

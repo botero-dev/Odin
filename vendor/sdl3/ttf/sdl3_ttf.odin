@@ -53,6 +53,11 @@ Text :: struct {
 	internal:  ^TextData,
 }
 
+Variation :: struct {
+	tag:   u32,
+	value: f32,
+}
+
 FontStyle :: enum u32 {
 	BOLD,
 	ITALIC,
@@ -124,6 +129,11 @@ SubString :: struct {
 	offset, length:            c.int,
 	line_index, cluster_index: c.int,
 	rect:                      SDL.Rect,
+}
+
+// Build a font variation from an axis tag (e.g. "wght") and a value.
+VARIATION :: proc(axis: string, value: f32) -> Variation {
+	return Variation{StringToTag(cstring(raw_data(axis))), value}
 }
 
 @(default_calling_convention="c", link_prefix="TTF_", require_results)
@@ -246,6 +256,8 @@ foreign lib {
 
 	SetFontLanguage :: proc(font: ^Font, language_bcp47: cstring) -> bool ---
 
+	SetFontVariations :: proc(font: ^Font, variations: ^Variation, count: c.size_t) -> bool ---
+
 	GetGlyphMetrics :: proc(font: ^Font, ch: u32, minx, maxx, miny, maxy, advance: ^c.int) -> bool ---
 	GetGlyphKerning :: proc(font: ^Font, previous_ch: u32, ch: u32, kerning: ^c.int) -> bool ---
 
@@ -257,6 +269,7 @@ foreign lib {
 	DestroySurfaceTextEngine  :: proc(engine: ^TextEngine) ---
 
 	DrawRendererText          :: proc(text: ^Text, x, y: f32) -> bool ---
+	DrawRendererTextTx         :: proc(text: ^Text, x, y: f32, tx: ^f32) -> bool ---
 	DestroyRendererTextEngine :: proc(engine: ^TextEngine) ---
 
 	DestroyGPUTextEngine      :: proc(engine: ^TextEngine) ---

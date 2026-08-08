@@ -1873,6 +1873,8 @@ gb_internal LLVMTypeRef lb_type_internal_for_procedures_raw(lbModule *m, Type *t
 			} else if (is_type_boolean(e_type) &&
 			    type_size_of(e_type) <= 1) {
 				param_type = LLVMInt1TypeInContext(m->ctx);
+			} else if (is_type_union_maybe_pointer(e_type)) {
+				param_type = lb_type(m, base_type(e_type)->Union.variants[0]);
 			} else {
 				if (is_type_proc(e_type)) {
 					param_type = lb_type(m, t_rawptr);

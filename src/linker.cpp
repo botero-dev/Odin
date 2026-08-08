@@ -708,6 +708,9 @@ try_cross_linking:;
 
 				glue = gb_string_appendc(glue, "-Wno-macro-redefined ");
 
+				// PIC is not enabled by default on i386
+				glue = gb_string_appendc(glue, "-fPIC ");
+
 				result = system_exec_command_line_app("android-native-app-glue-compile", glue);
 				if (result) {
 					return result;

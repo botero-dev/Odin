@@ -1871,6 +1871,9 @@ gb_internal void init_build_context(TargetMetrics *cross_target, Subtarget subta
 	}
 
 	if (subtarget == Subtarget_Android) {
+		// Force usage of native toolchain even when target arch is same as host
+		build_context.cross_compiling = true;
+
 		switch (build_context.build_mode) {
 		case BuildMode_DynamicLibrary:
 		case BuildMode_Object:

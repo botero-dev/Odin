@@ -18,8 +18,13 @@ when ODIN_OS == .Linux {
 	@(private="file")
 	@(default_calling_convention="c")
 	foreign libc {
-		@(link_name="__errno_location")
-		_get_errno :: proc() -> ^int ---
+		when ODIN_PLATFORM_SUBTARGET != .Android {
+			@(link_name="__errno_location")
+			_get_errno :: proc() -> ^int ---
+		} else {
+			@(link_name="__errno")
+			_get_errno :: proc() -> ^int ---
+		}
 	}
 
 	EDOM   :: 33

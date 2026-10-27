@@ -37,7 +37,7 @@ MouseWheelSource :: enum c.int {
 	UNSPECIFIED, /**< The system didn't provide source info. Presumably is a wheel. */
 	WHEEL,       /**< Event comes from wheel rotation */
 	TOUCH,       /**< Event comes from touchpad two-finger gesture or similar */
-	CONTINUOUS,  /**< Event comes from other source that reports continuous scrolling events */
+	CONTINUOUS,  /**< Event comes from other source that reports continuous scrolling events. e.g. trackballs */
 	WHEEL_TILT,  /**< Event comes from mouse wheel being tilted sideways */
 }
 CursorFrameInfo :: struct {
